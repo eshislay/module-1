@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I Love Froebel's International School</title>
+</head>
+<body style="background-color: rgb(144, 238, 161);">
+    <center>
+        <h1>I Love Froebel's International School!</h1>
+        <p>Froebel's International School is known for its excellent education, diverse community, and vibrant campus life. Students enjoy a wide range of extracurricular activities and a supportive learning environment.</p>
+        <img src="https://www.froebels.edu.pk/images/logo.png" alt="Froebel's International School" width="300">
+        <h2>Why I Love Froebel's International School</h2>
+        <ul>
+            <li>It has a diverse and inclusive community</li>
+            <li>It offers a wide range of extracurricular activities</li>
+            <li>It provides a supportive learning environment</li>
+        </ul>
+        <h3>Learn more:</h3>
+        <a href="https://www.froebels.edu.pk/" target="_blank">Froebel's International School - Official Website</a>
+        <h3>Read Inside This Page:</h3>
+        <iframe
+            src="https://www.froebels.edu.pk/"
+            width="600"
+            height="400"
+            title="Froebel's International School Homepage">
+        </iframe>
+    </center>
+</body>
+</html>
