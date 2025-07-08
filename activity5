@@ -1,0 +1,148 @@
+import tkinter as tk
+from tkinter import ttk
+from tkcalendar import DateEntry
+
+class HisabKitabApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("SiteSense: حساب کتاب Companion")
+        self.geometry("900x600")
+        self.lang = "EN"  # Toggle between EN and UR
+
+        self.frames = {}
+        for Page in (HomePage, MaterialPage, ContractorPage, AttendancePage):
+            page = Page(self)
+            self.frames[Page.__name__] = page
+            page.place(relwidth=1, relheight=1)
+
+        self.show_page("HomePage")
+
+    def toggle_language(self):
+        self.lang = "UR" if self.lang == "EN" else "EN"
+        for frame in self.frames.values():
+            if hasattr(frame, "refresh_labels"):
+                frame.refresh_labels()
+
+    def show_page(self, name):
+        self.frames[name].tkraise()
+
+
+class HomePage(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master, bg="#f6f6f6")
+        self.master = master
+        self.label = tk.Label(self, text="SiteSense Dashboard", font=("Helvetica", 20, "bold"))
+        self.label.pack(pady=20)
+
+        buttons = [
+            ("Material Summary", "MaterialPage"),
+            ("Contractor Payments", "ContractorPage"),
+            ("Attendance Sheet", "AttendancePage"),
+        ]
+
+        self.button_widgets = []
+        for text, page in buttons:
+            btn = tk.Button(self, text=text, width=30, height=2,
+                            command=lambda p=page: master.show_page(p))
+            btn.pack(pady=10)
+            self.button_widgets.append((btn, text))
+
+        self.lang_btn = tk.Button(self, text="Translate to Urdu", command=master.toggle_language)
+        self.lang_btn.pack(pady=20)
+
+    def refresh_labels(self):
+        is_urdu = self.master.lang == "UR"
+        translations = {
+            "Material Summary": "مٹیریل سمری",
+            "Contractor Payments": "ٹھیکیدار ادائیگی",
+            "Attendance Sheet": "حاضری شیٹ",
+            "Translate to Urdu": "انگریزی میں ترجمہ کریں",
+        }
+        for btn, en_text in self.button_widgets:
+            btn.config(text=translations[en_text] if is_urdu else en_text)
+        self.lang_btn.config(
+            text="انگریزی میں ترجمہ کریں" if is_urdu else "Translate to Urdu"
+        )
+
+
+class MaterialPage(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.master = master
+        self.headers_en = ["Date", "Description", "Unit Cost", "Total Cost", "Note"]
+        self.headers_ur = ["تاریخ", "تفصیل", "فی یونٹ لاگت", "کل لاگت", "نوٹ"]
+        self.tree = ttk.Treeview(self, columns=self.headers_en, show="headings")
+        for h in self.headers_en:
+            self.tree.heading(h, text=h)
+            self.tree.column(h, width=120)
+        self.tree.pack(fill="both", expand=True)
+
+        self.lang_btn = tk.Button(self, text="Back", command=lambda: master.show_page("HomePage"))
+        self.lang_btn.pack(pady=10)
+
+    def refresh_labels(self):
+        headers = self.headers_ur if self.master.lang == "UR" else self.headers_en
+        for col, new_label in zip(self.tree["columns"], headers):
+            self.tree.heading(col, text=new_label)
+
+
+class ContractorPage(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.master = master
+        self.headers_en = ["Date", "Description", "Paid Amount", "Remaining", "Note"]
+        self.headers_ur = ["تاریخ", "تفصیل", "ادا شدہ رقم", "بقایا رقم", "نوٹ"]
+        self.tree = ttk.Treeview(self, columns=self.headers_en, show="headings")
+        for h in self.headers_en:
+            self.tree.heading(h, text=h)
+            self.tree.column(h, width=150)
+        self.tree.pack(fill="both", expand=True)
+
+        back_btn = tk.Button(self, text="Back", command=lambda: master.show_page("HomePage"))
+        back_btn.pack(pady=10)
+
+    def refresh_labels(self):
+        headers = self.headers_ur if self.master.lang == "UR" else self.headers_en
+        for col, new_label in zip(self.tree["columns"], headers):
+            self.tree.heading(col, text=new_label)
+
+
+class AttendancePage(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.master = master
+
+        self.label_project = tk.Label(self, text="Project Name")
+        self.label_project.pack()
+        self.entry_project = tk.Entry(self)
+        self.entry_project.pack()
+
+        self.label_date = tk.Label(self, text="Date")
+        self.label_date.pack()
+        self.entry_date = DateEntry(self, width=12, background='darkblue',
+                                    foreground='white', borderwidth=2)
+        self.entry_date.pack(pady=5)
+
+        self.headers_en = ["No.", "Name"]
+        self.headers_ur = ["نمبر", "نام"]
+        self.tree = ttk.Treeview(self, columns=("No.", "Name"), show="headings")
+        for i in range(1, 16):
+            self.tree.insert("", "end", values=(i, ""))
+        self.refresh_labels()
+        self.tree.pack(fill="both", expand=True)
+
+        self.back_btn = tk.Button(self, text="Back", command=lambda: master.show_page("HomePage"))
+        self.back_btn.pack(pady=10)
+
+    def refresh_labels(self):
+        is_urdu = self.master.lang == "UR"
+        self.label_project.config(text="پراجیکٹ کا نام" if is_urdu else "Project Name")
+        self.label_date.config(text="تاریخ" if is_urdu else "Date")
+        headers = self.headers_ur if is_urdu else self.headers_en
+        for col, txt in zip(self.tree["columns"], headers):
+            self.tree.heading(col, text=txt)
+
+
+if __name__ == "__main__":
+    app = HisabKitabApp()
+    app.mainloop()
