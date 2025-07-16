@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cascading Background Effect</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            transition: background 2s ease;
+        }                          
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background 1.5s ease;
+        }
+
+        header:hover {
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+        }
+
+        section {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cascading Background Effect</h1>
+    </header>
+
+    <section>
+        <p>Hover over the header to see a smooth background transition. This cascading effect uses linear gradients,
+            transitions, and layering to create dynamic and responsive styling. You can apply similar techniques to
+            sections, buttons, or whole pages for a stunning visual experience!</p>
+    </section>
+</body>
+
+</html>
