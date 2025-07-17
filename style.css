@@ -1,0 +1,24 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0D1117;
+    color: #C9D1D9;
+}
+
+h1 {
+    color: #5077a3;
+}
+
+/* Attribute Selector */
+a {
+    color: #425e4a;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1F6FEB;
+}
+
+/* Child Selector */
+ul>li {
+    font-weight: bold;
+}
