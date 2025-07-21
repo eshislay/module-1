@@ -1,0 +1,66 @@
+< !DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Pseudo Class Showcase</title><style>body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0faff;
+    margin: 40px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 3px solid #3498db;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+}
+
+h1::after {
+    content: " ✨";
+    color: #f39c12;
+}
+
+.btn {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 12px 24px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1abc9c;
+}
+
+ul li:first-child {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+ul li:last-child {
+    color: #9b59b6;
+}
+
+ul li:nth-child(2n) {
+    background-color: #ecf0f1;
+}
+
+input:focus {
+    border-color: #2ecc71;
+    outline: none;
+}
+
+p::first-letter {
+    font-size: 150%;
+    color: #e67e22;
+}
+
+a:visited {
+    color: #8e44ad;
+}
+
+</style></head><body><div class="container"><h1>Pseudo Class Playground</h1><p>This is a paragraph demonstrating a styled first letter for visual impact. It uses ::first-letter.</p><a href="https://codingal.com" target="_blank">Visit Codingal</a><ul><li>First Item</li><li>Second Item</li><li>Third Item</li><li>Fourth Item</li></ul><input type="text" placeholder="Focus to change border" /><a class="btn" href="#">Hover Over Me</a></div></body></html>
