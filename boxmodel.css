@@ -1,0 +1,47 @@
+< !DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Box Model Properties</title><style>body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box-model {
+    width: 300px;
+    background-color: #ffffff;
+    margin: 40px;
+    /* outer space */
+    border: 5px solid #3498db;
+    /* border around content */
+    padding: 20px;
+    /* space inside border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.box-model h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.description {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.label {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eaf4ff;
+    border-left: 4px solid #3498db;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+</style></head><body><div class="box-model"><h2>Box Model Properties</h2><p class="description">The CSS Box Model consists of: <strong>Margin</strong>(outer space),
+<strong>Border</strong>,
+<strong>Padding</strong>(inner space),
+and <strong>Content</strong>. This layout demonstrates how each area impacts design. </p><div class="label">Margin → Border → Padding → Content</div></div></body></html>
