@@ -1,0 +1,43 @@
+< !DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>CSS Positioning Activity</title><style>body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    position: relative;
+}
+
+.box {
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+}
+
+.static {
+    background-color: #3498db;
+    position: static;
+}
+
+.relative {
+    background-color: #e67e22;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.absolute {
+    background-color: #2ecc71;
+    position: absolute;
+    top: 50px;
+    left: 200px;
+}
+
+.fixed {
+    background-color: #9b59b6;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+</style></head><body><div class="box static">Static</div><div class="box relative">Relative</div><div class="box absolute">Absolute</div><div class="box fixed">Fixed</div></body></html>
