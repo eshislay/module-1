@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<Htnl lang="en">
+<head>
+<title>functios in js</title>
+</head>
+<body>
+<script>
+document.write("welcome to javascript")
+function display(name){
+    document.write("<br>welcome to codingal",name);}
+    name= Eshal khan
+    display(name)
+    </script>
+    </body>
+
