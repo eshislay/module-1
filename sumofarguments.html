@@ -1,0 +1,34 @@
+// Define an object to hold trigonometric functions
+const Trigonometry = {
+sin: function (angleInDegrees) {
+return Math.sin(angleInDegrees * Math.PI / 180);
+},
+cos: function (angleInDegrees) {
+return Math.cos(angleInDegrees * Math.PI / 180);
+},
+tan: function (angleInDegrees) {
+return Math.tan(angleInDegrees * Math.PI / 180);
+}
+};
+
+// Function to calculate and print the sum of all arguments
+function sumOfArguments(...args) {
+let sum = 0;
+args.forEach(arg => sum += arg);
+console.log(`Sum of arguments: ${sum}`);
+return sum;
+}
+
+// Function to print trigonometric values for each argument
+function printTrigonometricValues(...angles) {
+angles.forEach(angle => {
+console.log(`\nAngle: ${angle}°`);
+console.log(`Sin: ${Trigonometry.sin(angle).toFixed(4)}`);
+console.log(`Cos: ${Trigonometry.cos(angle).toFixed(4)}`);
+console.log(`Tan: ${Trigonometry.tan(angle).toFixed(4)}`);
+});
+}
+
+// Example usage:
+let total = sumOfArguments(30, 45, 60);
+printTrigonometricValues(30, 45, 60);
